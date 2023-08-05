@@ -7,6 +7,8 @@ const api = supertest(app);
 
 const helper = require("../utils/test_helper");
 
+const mongoose = require("mongoose");
+
 beforeEach(async () => {
   await Blog.deleteMany({});
 
@@ -32,3 +34,7 @@ describe("when there is initially some blogs saved", () => {
   });
 });
 
+afterAll(done => {
+  mongoose.connection.close()
+  done()
+})

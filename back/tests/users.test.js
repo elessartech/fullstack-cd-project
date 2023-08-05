@@ -7,6 +7,8 @@ const api = supertest(app);
 
 const helper = require("../utils/test_helper");
 
+const mongoose = require("mongoose");
+
 beforeEach(async () => {
   await User.deleteMany({});
 
@@ -50,3 +52,8 @@ describe("adding a user", () => {
     await api.post("/api/users").send(notUniqueUsername).expect(401);
   });
 });
+
+afterAll(done => {
+  mongoose.connection.close()
+  done()
+})
