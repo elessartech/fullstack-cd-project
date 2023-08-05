@@ -153,7 +153,7 @@ const App = () => {
 
   return (
     <div>
-      <h2>blogs</h2>
+      <h2>Blogs</h2>
       <div className="error-message" style={{ color: "red" }}>
         {errorMessage}
       </div>
