@@ -40,6 +40,12 @@ jobs:
       - name: lint back
         working-directory: ./back
         run: npm run eslint
+      - name: deploy back to render
+        if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
+        run: curl https://api.render.com/deploy/srv-${{ vars.BACK_RENDER_SERVICE_ID }}?key=${{ vars.BACK_RENDER_API_KEY }}
+      - name: deploy front to render
+        if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
+        run: curl https://api.render.com/deploy/srv-${{ vars.FRONT_RENDER_SERVICE_ID }}?key=${{ vars.FRONT_RENDER_API_KEY }}
       - name: deploy success
         uses: rjstone/discord-webhook-notify@v1.0.4
         if: ${{ success() && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
