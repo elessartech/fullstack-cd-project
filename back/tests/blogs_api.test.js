@@ -34,7 +34,7 @@ describe("when there is initially some blogs saved", () => {
   });
 });
 
-afterAll(done => {
-  mongoose.connection.close()
-  done()
-})
+afterAll((done) => {
+  mongoose.connection.close();
+  done();
+});

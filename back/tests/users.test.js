@@ -53,7 +53,7 @@ describe("adding a user", () => {
   });
 });
 
-afterAll(done => {
-  mongoose.connection.close()
-  done()
-})
+afterAll((done) => {
+  mongoose.connection.close();
+  done();
+});
