@@ -51,20 +51,20 @@ jobs:
           severity: error
           details: Build failed!
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-      #- name: check the deployed front service URL
-      #  uses: jtalk/url-health-check-action@v3
-      #  with:
-      #    url: https://fullstack-cd-project-front.onrender.com
-      #    follow-redirect: false
-      #    max-attempts: 3
-      #    retry-delay: 5s
-      #- name: check the deployed back service URL
-      #  uses: jtalk/url-health-check-action@v3
-      #  with:
-      #    url: https://fullstack-cd-project-back.onrender.com/health|https://fullstack-cd-project-back.onrender.com
-      #    follow-redirect: false
-      #   max-attempts: 3
-      #    retry-delay: 5s
+      - name: check the deployed front service URL
+        uses: jtalk/url-health-check-action@v3
+        with:
+          url: https://fullstack-cd-project-front.onrender.com
+          follow-redirect: false
+          max-attempts: 3
+          retry-delay: 5s
+      - name: check the deployed back service URL
+        uses: jtalk/url-health-check-action@v3
+        with:
+          url: https://fullstack-cd-project-back.onrender.com/health|https://fullstack-cd-project-back.onrender.com
+          follow-redirect: false
+          max-attempts: 3
+          retry-delay: 5s
 
   tag_release:
     permissions: write-all
